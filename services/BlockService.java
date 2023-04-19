@@ -10,13 +10,13 @@ import java.util.Optional;
 @Service
 public class BlockService {
     @Autowired
-    private static BlockDAO blockDAO = new BlockDAO();
+    private static final BlockDAO blockDAO = new BlockDAO();
 
     public Optional<Block> findBlock(Long id) {
         return blockDAO.getBlock(id);
     }
 
-    public Iterable<Block> findAllDoc() {
+    public Iterable<Block> findAllBlocks() {
         return blockDAO.getAllBlocks();
     }
 
@@ -28,7 +28,7 @@ public class BlockService {
         blockDAO.saveBlock(title, address, directorId, phone);
     }
 
-    public void delete(long id) {
+    public void deleteBlock(long id) {
 
         blockDAO.deleteBlock(id);
     }
@@ -37,7 +37,7 @@ public class BlockService {
         blockDAO.deleteBlock(block);
     }
 
-    public void updateDoc(long id, String title, String address, Long directorId, String phone) {
+    public void updateBlock(long id, String title, String address, Long directorId, String phone) {
         blockDAO.updateBlock(id, title, address, directorId, phone);
     }
 }
