@@ -1,8 +1,10 @@
 package com.example.hospital.services;
+
 import com.example.hospital.dao.PatientDAO;
 import com.example.hospital.entitites.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
 @Service
@@ -14,7 +16,7 @@ public class PatientService {
         return patientDAO.getPatient(id);
     }
 
-    public Iterable<Patient> findAllDoc() {
+    public Iterable<Patient> findAllPatients() {
         return patientDAO.getAllPatient();
     }
 
