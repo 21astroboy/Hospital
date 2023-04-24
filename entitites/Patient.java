@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Patients")
+@Table(name = "patients")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,16 +15,18 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullname;
-    private Long  doctorId;
+    private Long doctorId;
     private Long blockId;
     private String address;
     private String insuranceNum;
+    private String phone;
 
-    public Patient(String fullname, Long doctorId, Long blockId, String address, String insuranceNum) {
+    public Patient(String fullname, Long doctorId, Long blockId, String address, String insuranceNum,String phone) {
         this.fullname = fullname;
         this.doctorId = doctorId;
         this.blockId = blockId;
         this.address = address;
         this.insuranceNum = insuranceNum;
+        this.phone = phone;
     }
 }

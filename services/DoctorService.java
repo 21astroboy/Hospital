@@ -1,36 +1,52 @@
 package com.example.hospital.services;
 
-import com.example.hospital.dao.DoctorDAO;
 import com.example.hospital.entitites.Doctor;
+import com.example.hospital.repo.DoctorsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
+
+import java.math.BigDecimal;
 
 @Service
 public class DoctorService {
     @Autowired
-    private static DoctorDAO doctorDAO = new DoctorDAO();
-    public Optional<Doctor> findDoc(Long id){
-        return doctorDAO.getDoctor(id);
-    }
-    public Iterable<Doctor> findAllDoc(){
-        return doctorDAO.getAllDoctors();
-    }
-    public void saveDoc(Doctor doctor){
-        doctorDAO.saveDoctor(doctor);
+    private DoctorsRepo repo;
+
+
+    public Doctor findDoc(Long id) {
+        return repo.getById(id);
     }
 
-    public void saveDoc(String fullname, String position, int experience, boolean isDir){
-        doctorDAO.saveDoctor(fullname,position,experience,isDir);
+    public Iterable<Doctor> findAllDoc() {
+        return repo.findAll();
     }
-    public void deleteDoc(long id){
 
-        doctorDAO.deleteDoctor(id);
+    public void saveDoc(Doctor doctor) {
+        repo.save(doctor);
     }
-    public void deleteDoctors(Doctor doctor){
-        doctorDAO.deleteDoctor(doctor);
+
+    public void saveDoc(String fullname, String position, int experience, boolean isDir, BigDecimal wage, String workNumber) {
+        Doctor doc = new Doctor(fullname, position, experience, isDir, wage, workNumber);
+        repo.save(doc);
     }
-    public void updateDoc(long id, String fullname, String position, int exp, boolean isDir){
-        doctorDAO.updateDoc(id,fullname,position,exp, isDir);
+
+    public void deleteDoc(long id) {
+
+        repo.deleteById(id);
+    }
+
+    public void deleteDoctors(Doctor doctor) {
+        repo.delete(doctor);
+    }
+
+    public void updateDoc(long id, String fullname, String position, int exp, boolean isDir, BigDecimal wage, String phone) {
+        Doctor doctor = repo.findById(id).orElseThrow();
+        doctor.setFullname(fullname);
+        doctor.setPosition(position);
+        doctor.setIsDirector(isDir);
+        doctor.setExperience(exp);
+        doctor.setWage(wage);
+        doctor.setWorkNumber(phone);
+        repo.save(doctor);
     }
 }
