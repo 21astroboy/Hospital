@@ -20,6 +20,9 @@ public class Patient {
     private String address;
     private String insuranceNum;
     private String phone;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 
     public Patient(String fullname, Long doctorId, Long blockId, String address, String insuranceNum,String phone) {
         this.fullname = fullname;

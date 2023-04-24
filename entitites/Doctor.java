@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "doctors")
@@ -23,8 +24,10 @@ public class Doctor {
     private BigDecimal wage;
     private String workNumber;
     @OneToOne
-    @JoinColumn(name = "")
-    private Block block;
+    @JoinColumn(name = "directorId")
+    private Block directorBlock;
+    @OneToMany(mappedBy = "doctor")
+    private List<Patient> patients;
 
     public Doctor(String fullname, String position, Integer experience, Boolean isDirector, BigDecimal wage, String workNumber) {
         this.fullname = fullname;
