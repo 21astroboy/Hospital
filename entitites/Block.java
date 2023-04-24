@@ -19,6 +19,8 @@ public class Block {
     private String phone;
     private Long directorId;
     private Integer numberOfPlaces;
+    @OneToOne
+    private Doctor director;
 
 
     public Block(String title, String address, String phone, Long directorId, int numberOfPlaces) {
