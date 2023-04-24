@@ -18,11 +18,14 @@ public class Block {
     private String address;
     private String phone;
     private Long directorId;
+    private Integer numberOfPlaces;
 
-    public Block(String title, String address, String phone, Long directorId) {
+
+    public Block(String title, String address, String phone, Long directorId, int numberOfPlaces) {
         this.title = title;
         this.address = address;
         this.phone = phone;
         this.directorId = directorId;
+        this.numberOfPlaces = numberOfPlaces;
     }
 }
