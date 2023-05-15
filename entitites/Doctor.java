@@ -1,5 +1,6 @@
 package com.example.hospital.entitites;
 
+import com.example.hospital.entitites.cms.Item;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Doctor {
+public class Doctor extends Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

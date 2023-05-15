@@ -1,5 +1,6 @@
 package com.example.hospital.entitites;
 
+import com.example.hospital.entitites.cms.Item;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Patient {
+public class Patient extends Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
